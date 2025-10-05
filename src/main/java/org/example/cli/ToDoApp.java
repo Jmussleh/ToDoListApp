@@ -15,7 +15,7 @@ public class ToDoApp {
     public static void main(String[] args) {
         System.out.println("*** To-Do List App ***");
         boolean running = true;
-
+        //While running do this:
         while (running) {
             printMenu();
             String input = prompt("Enter choice: ");
