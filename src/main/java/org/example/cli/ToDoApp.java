@@ -6,7 +6,7 @@ import org.example.repo.ToDoRepository;
 
 import java.util.List;
 import java.util.Scanner;
-
+//Main method for app
 public class ToDoApp {
 
     private static final Scanner in = new Scanner(System.in);
