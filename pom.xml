@@ -70,7 +70,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Make a single runnable (fat) JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -83,7 +82,7 @@
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>edu.valencia.mod4.App</mainClass>
+                                    <mainClass>org/example/cli/ToDoApp.java</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
