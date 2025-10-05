@@ -64,6 +64,7 @@ public class ToDoApp {
             println("There are no tasks to view...");
             return;
         }
+        //printing the to-do list
         println("To-Do List");
         for (ToDo t : tasks) {
             String box = t.isDone() ? "[x]" : "[ ]";
