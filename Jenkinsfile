@@ -3,7 +3,7 @@ pipeline {
   tools { jdk 'jdk17'; maven 'maven3' }
   environment {
     APP_NAME    = 'todo-hibernate'
-    DOCKER_REPO = 'YOUR_DOCKERHUB_USERNAME/todo-hibernate'  // <-- change
+    DOCKER_REPO = 'goosetracks/todo-hibernate'  //
     TAG_BUILD   = "${env.BUILD_NUMBER}"
     TAG_LATEST  = "latest"
   }
