@@ -1,0 +1,27 @@
+<configuration>
+
+    <!-- Where to put log files -->
+    <property name="LOG_PATH" value="logs" />
+
+    <!-- JSON console appender (for demo + IntelliJ console) -->
+    <appender name="JSON_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <!-- JSON file appender for presentation artifacts -->
+    <appender name="JSON_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/todo-api.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/todo-api.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+    </appender>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="JSON_CONSOLE" />
+        <appender-ref ref="JSON_FILE" />
+    </root>
+
+</configuration>
