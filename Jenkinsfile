@@ -31,7 +31,27 @@ pipeline {
         bat 'docker tag %DOCKER_REPO%:%TAG_BUILD% %DOCKER_REPO%:%TAG_LATEST%'
       }
     }
-
+stage('Load Test with JMeter') {
+    steps {
+        sh '''
+        mkdir -p jmeter-results
+        jmeter -n \
+          -t load-tests/todo_load_test.jmx \
+          -l jmeter-results/results.jtl \
+          -e -o jmeter-results/report
+        '''
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'jmeter-results/**', fingerprint: true
+        }
+        unsuccessful {
+            mail to: 'dev-team@example.com',
+                 subject: 'JMeter load test FAILED',
+                 body: 'Check Jenkins job for details.'
+        }
+    }
+}
     stage('Docker Push') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
