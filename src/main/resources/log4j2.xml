@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console logs in JSON (good for Docker / aggregation tools) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <JsonLayout
+                    complete="false"
+                    eventEol="true"
+                    compact="true"
+                    objectMessageAsJsonObject="true">
+                <KeyValuePair key="app" value="ToDoListApp"/>
+            </JsonLayout>
+        </Console>
+
+        <!-- File appender for local log file -->
+        <File name="File" fileName="logs/app.log" immediateFlush="true" append="true">
+            <JsonLayout
+                    complete="false"
+                    eventEol="true"
+                    compact="true"
+                    objectMessageAsJsonObject="true">
+                <KeyValuePair key="app" value="ToDoListApp"/>
+            </JsonLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <!-- Your app package -->
+        <Logger name="org.example" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
