@@ -6,9 +6,12 @@
     <session-factory>
         <!-- JDBC -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/todolistapp?useSSL=false&amp;serverTimezone=UTC</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">UcfKnights17!</property>
+        <property name="connection.url">
+            jdbc:mysql://host.docker.internal:3306/todolistapp?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
+        </property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">UcfKnights17!</property>
+
 
         <!-- Dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
